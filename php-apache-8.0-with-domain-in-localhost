@@ -1,0 +1,17 @@
+php:
+   build: .
+   image: php:8.0-apache
+   working_dir: /var/www/html
+   volumes:
+     - ./:/var/www/html
+     - ./php.ini:/usr/local/etc/php/php.ini
+   extra_hosts:
+     - "vlpreddy.local:127.0.0.1"
+   hostname: vlpreddy.local
+   domainname: local 
+   ports:
+     - 80:80  
+   environment:
+     - "DB_PORT=3306"
+     - "DB_HOST=database"
+# we also need to add 127.0.0.1 vlpreddy.local to hosts file in your local operating system so you can use domain instead of localhost in your local.
